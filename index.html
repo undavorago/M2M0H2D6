@@ -1288,71 +1288,8 @@
     }
     #page-dossier .dossier-head{padding-left:20px;padding-right:20px;}
     #page-dossier .dossier-head p{font-size:1.08rem;line-height:1.45;}
-
-    /* ---- MOBILE DOSSIER: cinematic bg-photo cards ---- */
-    .evidence{
-      display:block;
-      position:relative;
-      overflow:hidden;
-      padding:0;
-      min-height:420px;
-      border-bottom:1px solid rgba(201,169,110,.18);
-    }
-    /* photo becomes full-bleed atmospheric background */
-    .ev-photo{
-      position:absolute!important;
-      inset:0!important;
-      height:100%!important;
-      z-index:0;
-      background:none!important;
-      box-shadow:none!important;
-    }
-    .ev-photo img{
-      position:absolute!important;
-      inset:0!important;
-      width:100%!important;
-      height:100%!important;
-      object-fit:cover!important;
-      object-position:center top!important;
-      opacity:.28;
-      filter:grayscale(.3) contrast(1.14) saturate(.82)!important;
-      transform:scale(1.04);
-      transition:transform 6s ease;
-    }
-    /* dark cinematic overlay — vignette + burgundy cast */
-    .ev-photo::after{
-      content:"";position:absolute;inset:0;z-index:1;
-      background:
-        linear-gradient(180deg,rgba(8,6,5,.72) 0%,rgba(8,6,5,.44) 42%,rgba(8,6,5,.78) 100%),
-        linear-gradient(135deg,rgba(122,31,46,.18) 0%,transparent 55%);
-    }
-    /* hide frame chrome — redundant at bg scale */
-    .ev-photo .frame-deco,
-    .ev-photo .ev-tag,
-    .ev-photo .micro--weapon{display:none!important;}
-    /* text floats above */
-    .ev-text{
-      position:relative;
-      z-index:2;
-      padding:clamp(52px,10vh,80px) clamp(24px,6vw,40px) clamp(52px,10vh,80px);
-    }
-    /* subtle left accent line — keeps the noire editorial feel */
-    .ev-text::before{
-      content:"";position:absolute;left:0;top:clamp(52px,10vh,80px);bottom:clamp(52px,10vh,80px);
-      width:2px;background:linear-gradient(180deg,transparent,var(--burgundy-bright) 30%,rgba(201,169,110,.45) 70%,transparent);
-      box-shadow:0 0 16px rgba(154,43,60,.5);
-    }
-    .ev-name{font-size:clamp(30px,9.5vw,52px);}
-    /* show item number as large ghost watermark behind title */
-    .ev-num{
-      font-size:10px;letter-spacing:.3em;opacity:.55;margin-bottom:8px;
-    }
-    .closing{display:block;padding:clamp(60px,10vh,100px) 0;}
-    #closing-photo{
-      position:relative;width:100%;height:320px;margin:0 0 clamp(32px,5vh,52px);
-      display:block;
-    }
-    #closing-photo img{object-fit:cover!important;object-position:center top!important;}
+    #page-dossier .ev-photo{background:linear-gradient(135deg,rgba(34,28,23,.88),rgba(12,9,7,.68));}
+    #page-dossier .ev-photo img{filter:saturate(.98) contrast(1.08) brightness(1.08);}
   }
 
   @media (max-width:520px){
