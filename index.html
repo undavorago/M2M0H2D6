@@ -658,6 +658,24 @@
     .rd-track{grid-template-columns:32px 1fr auto;gap:12px;}
     .rd-signal,.rd-rating{font-size:9px;}
   }
+
+  /* ---------- SCROLL HINT ---------- */
+  .hero__scroll-hint{
+    display:none;
+    flex-direction:column;align-items:flex-start;gap:6px;
+    margin-top:clamp(28px,5vh,48px);
+    font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);opacity:.38;
+    position:relative;z-index:3;
+    animation:hintPulse 2.8s ease-in-out infinite 2s;
+  }
+  .hero__scroll-hint::after{
+    content:"";display:block;width:1px;height:32px;
+    background:linear-gradient(180deg,var(--gold),transparent);
+    animation:hintDrop 2.8s ease-in-out infinite 2s;
+  }
+  @keyframes hintPulse{0%,100%{opacity:.38;}50%{opacity:.18;}}
+  @keyframes hintDrop{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
 </style>
 <style>
   /* ---------- HALFTONE GRAIN ---------- */
@@ -1223,11 +1241,10 @@
     }
     .hero__photo-col::before{display:none;}
     .hero__text{position:relative;z-index:2;}
-    .hero__title{font-size:clamp(28px,8.5vw,52px);max-width:52%;}
-    .hero__deck{font-size:16px;max-width:52%;}
-    .eyebrow{max-width:52%;}
-    .hero__meta{max-width:52%;}
+    .hero__title{font-size:clamp(28px,8.5vw,52px);}
+    .hero__deck{font-size:16px;}
     .wanted-card{position:relative;z-index:3;margin-top:clamp(24px,4vh,40px);width:100%;max-width:420px;transform:none;}
+    .hero__scroll-hint{display:flex;}
 
     /* ---- SITTING PHOTO: ghost background of biz section ---- */
     #sitting-photo{
@@ -1366,6 +1383,7 @@
             <button class="hero__more" data-go="dossier">Подробнее</button>
           </div>
         </div>
+        <div class="hero__scroll-hint" aria-hidden="true"></div>
       </div>
       <div class="hero__photo-col">
         <div class="photo-ph has-photo cutout" id="hero-photo"><img src="images/hero.webp" alt="Лайла Кокк" style="width: 550px"></div>
