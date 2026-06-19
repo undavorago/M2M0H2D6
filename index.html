@@ -662,23 +662,23 @@
   /* ---------- SCROLL HINT ---------- */
   .hero__scroll-hint{
     display:none;
-    flex-direction:column;align-items:flex-start;gap:8px;
+    flex-direction:row;align-items:center;gap:10px;
     margin-top:clamp(28px,5vh,48px);
-    font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;
-    color:var(--gold);opacity:.38;
+    font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cream);opacity:.72;
     position:relative;z-index:3;
     animation:hintPulse 2.8s ease-in-out infinite 2s;
   }
   .hero__scroll-hint::before{
-    content:"scroll";
+    content:"листай";
   }
   .hero__scroll-hint::after{
-    content:"";display:block;width:1px;height:36px;
-    background:linear-gradient(180deg,var(--gold),transparent);
+    content:"↓";
+    font-size:16px;letter-spacing:0;
     animation:hintDrop 2.8s ease-in-out infinite 2s;
   }
-  @keyframes hintPulse{0%,100%{opacity:.38;}50%{opacity:.18;}}
-  @keyframes hintDrop{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+  @keyframes hintPulse{0%,100%{opacity:.72;}50%{opacity:.32;}}
+  @keyframes hintDrop{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
 </style>
 <style>
   /* ---------- HALFTONE GRAIN ---------- */
@@ -1245,7 +1245,7 @@
     .hero__photo-col::before{display:none;}
     .hero__text{position:relative;z-index:2;}
     .hero__title{font-size:clamp(28px,8.5vw,52px);}
-    .hero__deck{font-size:16px;}
+    .hero__deck{font-size:16px;max-width:50vw;}
     .wanted-card{position:relative;z-index:3;margin-top:clamp(100px,14vh,140px);width:100%;max-width:420px;transform:none;}
     .hero__scroll-hint{display:flex;}
 
