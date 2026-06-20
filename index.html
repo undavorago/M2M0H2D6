@@ -662,11 +662,11 @@
   /* ---------- SCROLL HINT ---------- */
   .hero__scroll-hint{
     display:flex;
-    flex-direction:row;align-items:center;justify-content:center;gap:10px;
-    position:absolute;bottom:clamp(22px,4vh,40px);left:50%;transform:translateX(-50%);
+    flex-direction:row;align-items:center;gap:10px;
+    margin-top:clamp(20px,3vh,32px);
     font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
     color:#fff;opacity:1;white-space:nowrap;
-    z-index:3;
+    position:relative;z-index:3;
     animation:hintPulse 2.8s ease-in-out infinite 2s;
   }
   .hero__scroll-hint::before{
@@ -1386,12 +1386,12 @@
             <button class="hero__more" data-go="dossier">Подробнее</button>
           </div>
         </div>
+        <div class="hero__scroll-hint" aria-hidden="true"></div>
       </div>
       <div class="hero__photo-col">
         <div class="photo-ph has-photo cutout" id="hero-photo"><img src="images/hero.webp" alt="Лайла Кокк" style="width: 550px"></div>
       </div>
     </div>
-    <div class="hero__scroll-hint" aria-hidden="true"></div>
   </section>
 
   <!-- КТО Я -->
