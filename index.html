@@ -662,10 +662,10 @@
   /* ---------- SCROLL HINT ---------- */
   .hero__scroll-hint{
     display:none;
-    flex-direction:row;align-items:center;gap:10px;
+    flex-direction:row;align-items:center;justify-content:center;gap:10px;
     margin-top:clamp(28px,5vh,48px);
     font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--cream);opacity:.72;
+    color:#fff;opacity:1;
     position:relative;z-index:3;
     animation:hintPulse 2.8s ease-in-out infinite 2s;
   }
@@ -1247,7 +1247,7 @@
     .hero__title{font-size:clamp(28px,8.5vw,52px);}
     .hero__deck{font-size:16px;max-width:50vw;}
     .wanted-card{position:relative;z-index:3;margin-top:clamp(100px,14vh,140px);width:100%;max-width:420px;transform:none;}
-    .hero__scroll-hint{display:flex;}
+    .hero__scroll-hint{display:flex;width:100%;justify-content:center;}
 
     /* ---- SITTING PHOTO: ghost background of biz section ---- */
     #sitting-photo{
