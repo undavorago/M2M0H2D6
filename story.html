@@ -79,20 +79,10 @@
     padding:0 24px;
   }
   .video-frame{
-    position:relative;
     width:100%;
-    aspect-ratio:16/9;
     border:1px solid var(--burgundy);
     background:#0d0a09;
     overflow:hidden;
-  }
-  .video-frame video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
   }
   .video-fallback{
     position:absolute;
@@ -240,9 +230,7 @@
   <!-- VIDEO BLOCK 1 (после части 1) -->
   <section class="video-block reveal-fade">
     <div class="video-frame">
-      <!-- Чтобы вставить видео: добавьте src="путь.mp4" на <video> ниже -->
-      <video id="video-1" autoplay loop muted playsinline></video>
-      <div class="video-fallback">[Видео 1 — будет добавлено]</div>
+      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/h7in56?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
     </div>
   </section>
 
@@ -326,9 +314,7 @@
   <!-- VIDEO BLOCK 2 (после части 2) -->
   <section class="video-block reveal-fade">
     <div class="video-frame">
-      <!-- Чтобы вставить видео: добавьте src="путь.mp4" на <video> ниже -->
-      <video id="video-2" autoplay loop muted playsinline></video>
-      <div class="video-fallback">[Видео 2 — будет добавлено]</div>
+      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/s92hgs?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
     </div>
   </section>
 
@@ -378,8 +364,7 @@
   <!-- VIDEO BLOCK 3 (после финальной фразы) -->
   <section class="video-block reveal-fade">
     <div class="video-frame">
-      <video id="video-3" autoplay loop muted playsinline src="uploads/0630 (1)(2)-f0b30a9b.mp4"></video>
-      <div class="video-fallback">[Видео 3 — будет добавлено]</div>
+      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/ye1o57?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
     </div>
   </section>
 
