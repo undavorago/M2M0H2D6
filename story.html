@@ -66,9 +66,9 @@
   }
   .divider{
     width:1px;
-    height:90px;
+    height:48px;
     background:linear-gradient(to bottom,transparent,var(--gold),transparent);
-    margin:48px auto 0;
+    margin:24px auto 0;
     opacity:0.6;
   }
 
@@ -230,7 +230,7 @@
   <!-- VIDEO BLOCK 1 (после части 1) -->
   <section class="video-block reveal-fade">
     <div class="video-frame">
-      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/h7in56?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe class="lazy-video" allow="fullscreen;autoplay" allowfullscreen height="100%" data-src="https://streamable.com/e/h7in56?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
     </div>
   </section>
 
@@ -314,7 +314,7 @@
   <!-- VIDEO BLOCK 2 (после части 2) -->
   <section class="video-block reveal-fade">
     <div class="video-frame">
-      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/s92hgs?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe class="lazy-video" allow="fullscreen;autoplay" allowfullscreen height="100%" data-src="https://streamable.com/e/s92hgs?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
     </div>
   </section>
 
@@ -364,7 +364,7 @@
   <!-- VIDEO BLOCK 3 (после финальной фразы) -->
   <section class="video-block reveal-fade">
     <div class="video-frame">
-      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/ye1o57?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
+      <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe class="lazy-video" allow="fullscreen;autoplay" allowfullscreen height="100%" data-src="https://streamable.com/e/ye1o57?autoplay=1&nocontrols=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
     </div>
   </section>
 
@@ -387,14 +387,18 @@
   },{threshold:0,rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.reveal,.reveal-fade').forEach(el=>io.observe(el));
 
-  // Hide fallback label once a video actually has a usable source
-  document.querySelectorAll('.video-frame').forEach(frame=>{
-    const v=frame.querySelector('video');
-    const fb=frame.querySelector('.video-fallback');
-    const check=()=>{ if(v.currentSrc && v.readyState>0){ fb.style.display='none'; } };
-    v.addEventListener('loadeddata',check);
-    v.addEventListener('canplay',check);
-  });
+  // Load & autoplay embedded videos only once they enter the viewport
+  const videoIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      const iframe=e.target;
+      if(e.isIntersecting){
+        if(!iframe.src && iframe.dataset.src){ iframe.src=iframe.dataset.src; }
+      }else{
+        if(iframe.src){ iframe.src=''; }
+      }
+    });
+  },{threshold:0.25});
+  document.querySelectorAll('iframe.lazy-video').forEach(el=>videoIo.observe(el));
 </script>
 </body>
 </html>
