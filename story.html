@@ -403,6 +403,8 @@
   readBtn.addEventListener('click',()=>{
     document.body.classList.remove('lock-scroll');
     readBtn.classList.add('hidden');
+    readBtn.style.animation='none';
+    if(readBtn.getAnimations){ readBtn.getAnimations().forEach(a=>a.cancel()); }
     const target=document.getElementById('text-block-1');
     const targetY=window.scrollY+target.getBoundingClientRect().top-(window.innerHeight/2);
     window.scrollTo({top:Math.max(targetY,0),behavior:'smooth'});
