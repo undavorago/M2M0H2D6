@@ -38,7 +38,7 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    min-height:70vh;
+    min-height:100vh;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -72,14 +72,36 @@
     margin:24px auto 0;
     opacity:0.6;
   }
-  .scroll-cta{
+  .read-btn{
     font-family:'Special Elite',monospace;
     color:var(--gold);
-    font-size:0.72rem;
-    letter-spacing:0.24em;
+    font-size:0.78rem;
+    letter-spacing:0.28em;
     text-transform:uppercase;
-    opacity:0.5;
-    margin-top:20px;
+    background:transparent;
+    border:1px solid var(--gold);
+    padding:16px 40px;
+    margin-top:32px;
+    cursor:pointer;
+    animation:breathe 2.6s ease-in-out infinite;
+    transition:opacity 0.6s ease,transform 0.6s ease;
+  }
+  .read-btn:hover{
+    background:var(--gold);
+    color:var(--bg);
+  }
+  .read-btn.hidden{
+    opacity:0;
+    pointer-events:none;
+    transform:scale(0.9);
+  }
+  @keyframes breathe{
+    0%,100%{opacity:0.6;box-shadow:0 0 0 0 rgba(201,169,110,0.3);}
+    50%{opacity:1;box-shadow:0 0 0 10px rgba(201,169,110,0);}
+  }
+  body.lock-scroll{overflow:hidden;height:100vh;}
+  @media (prefers-reduced-motion:reduce){
+    .read-btn{animation:none;}
   }
 
   /* ---------- VIDEO BLOCK ---------- */
@@ -196,11 +218,11 @@
     <div class="label">О.Л.Д.С. · Личное</div>
     <h1>Любая<br>сторона</h1>
     <div class="divider"></div>
-    <div class="scroll-cta">Листайте, чтобы прочитать</div>
+    <button class="read-btn" id="read-btn" type="button">Читать</button>
   </section>
 
   <!-- TEXT BLOCK 1 -->
-  <section class="text-block reveal">
+  <section class="text-block reveal" id="text-block-1">
     <p class="first">Фиглио полагалось произносить «Фильо». Мне сказали об этом в первый же день, за обедом, когда пёс сидел под столом и с большим усердием разбирал кисточку от шнура на портьере. В доме Кокк за обедом редко говорили по очереди. Тётки спорили с другого конца стола, мужчины повышали голос по привычке, двери хлопали, кто-нибудь непременно звал прислугу, кто-нибудь отвечал за прислугу, papà ел молча, и это одно уже производило больше впечатления, чем все наши семейные голоса вместе взятые. Поэтому замечание о правильном произношении имени прозвучало не лекцией, а частью общего шума: кто-то попросил вина, кто-то напомнил о похоронах в пятницу, кто-то сказал «Фильо», а я, не отрывая взгляда от пса, ответил: «Фиглио».</p>
     <p>Никто не стал спорить всерьёз. В нашем доме спорили из-за земли, денег, браков, оскорблений, наследства, чужих долгов и того, кому позволено сидеть ближе к papà; произношение собачьего имени не стоило отдельной войны. Кроме того, Фиглио уже выбрал себе имя. Он поднял голову, услышав мою версию, выпустил кисточку и ударил хвостом по ножке стула. Для меня этого было достаточно. Я всегда считал, что грамматика должна знать своё место, особенно рядом с собакой, у которой зубы появились раньше манер.</p>
     <p>Он был мал, рыж и на редкость лишён благодарности к миру. Ветеринаров не любил, курьеров презирал, садовника считал лицом подозрительным, а гостей встречал с той мерой интереса, которую люди обычно проявляют к письмам от налоговой. В современной клинике его однажды назвали малышом. Больше не называли. После первого визита в карте появилась запись: «держит только владелец». Прекрасная фраза. В ней не было ни умиления, ни паники. Только привычная рутина: я держу, врач делает укол, Фиглио оскорбляет всех присутствующих в пределах своих лёгких, и мы уезжаем домой.</p>
@@ -374,6 +396,17 @@
 </div>
 
 <script>
+  // Lock scroll until the reader presses "Читать"
+  document.body.classList.add('lock-scroll');
+  const readBtn=document.getElementById('read-btn');
+  readBtn.addEventListener('click',()=>{
+    document.body.classList.remove('lock-scroll');
+    readBtn.classList.add('hidden');
+    const target=document.getElementById('text-block-1');
+    const targetY=window.scrollY+target.getBoundingClientRect().top-(window.innerHeight/2);
+    window.scrollTo({top:Math.max(targetY,0),behavior:'smooth'});
+  });
+
   // Scroll reveal
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
