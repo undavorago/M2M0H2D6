@@ -91,8 +91,8 @@
     color:var(--bg);
   }
   .read-btn.hidden{
-    animation:none;
-    opacity:0;
+    animation:none !important;
+    opacity:0 !important;
     pointer-events:none;
     transform:scale(0.9);
   }
@@ -403,8 +403,6 @@
   readBtn.addEventListener('click',()=>{
     document.body.classList.remove('lock-scroll');
     readBtn.classList.add('hidden');
-    readBtn.style.animation='none';
-    if(readBtn.getAnimations){ readBtn.getAnimations().forEach(a=>a.cancel()); }
     const target=document.getElementById('text-block-1');
     const targetY=window.scrollY+target.getBoundingClientRect().top-(window.innerHeight/2);
     window.scrollTo({top:Math.max(targetY,0),behavior:'smooth'});
